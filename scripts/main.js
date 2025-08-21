@@ -20,7 +20,7 @@ const minWidth48rem = window.matchMedia("(min-width: 48rem)");
 let popperInstance = null;
 
 function handleWidth(e) {
-  if (e.matches && !popperInstance) {
+  if (e.matches && popperInstance === null) {
     popperInstance = Popper.createPopper(buttonShare, tooltip, settings);
   } else if (!e.matches && popperInstance) {
     popperInstance.destroy();
@@ -33,22 +33,7 @@ handleWidth(minWidth48rem);
 
 //////////////////////////////////////////////////////////////////////////
 //
-// tooltip main logic
-function show() {
-  tooltip.setAttribute("data-show", "");
-  buttonShare.classList.add("is-active");
-
-  popperInstance.update();
-}
-
-function hide() {
-  tooltip.removeAttribute("data-show");
-  buttonShare.classList.remove("is-active");
-}
-
-//////////////////////////////////////////////////////////////////////////
-//
-// change button state to active when clicked
+// change button state to active when clicked, and back
 buttonShare.addEventListener("click", () => {
   const isShown = tooltip.hasAttribute("data-show");
 
