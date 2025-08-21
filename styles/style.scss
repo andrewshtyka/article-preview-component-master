@@ -149,6 +149,7 @@ body {
     &:hover .c-icon_button,
     &:focus-visible .c-icon_button {
       fill: $color-white;
+      rotate: -30deg;
     }
 
     &:focus-visible {
@@ -162,7 +163,7 @@ body {
   transform: translate(0.05rem, -0.05rem);
   fill: $color-gray-500;
 
-  transition: fill 150ms ease-in-out, rotate 150ms ease-in-out;
+  transition: fill 150ms ease-in-out, rotate 200ms ease-in-out;
 }
 
 .c-sharing_tooltip {

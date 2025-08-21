@@ -15,7 +15,7 @@ const settings = {
 
 //////////////////////////////////////////////////////////////////////////
 //
-// Show Popper tooltip when width >=48rem
+// show Popper tooltip when width >=48rem
 const minWidth48rem = window.matchMedia("(min-width: 48rem)");
 let popperInstance = null;
 
@@ -37,13 +37,13 @@ handleWidth(minWidth48rem);
 buttonShare.addEventListener("click", () => {
   const isShown = tooltip.hasAttribute("data-show");
 
-  if (isShown) {
-    tooltip.removeAttribute("data-show");
-    buttonShare.classList.remove("is-active");
-  } else {
+  if (!isShown) {
     tooltip.setAttribute("data-show", "");
     buttonShare.classList.add("is-active");
     popperInstance.update();
+  } else {
+    tooltip.removeAttribute("data-show");
+    buttonShare.classList.remove("is-active");
   }
 });
 
