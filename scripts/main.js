@@ -22,12 +22,33 @@ const settings = {
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 //
+// show tooltip when screen width is >= 48rem
+const minWidth48rem = window.matchMedia("(min-width: 48rem)");
+let popperInstance = null;
+
+function handleWidth(e) {
+  if (e.matches && popperInstance === null) {
+    popperInstance = Popper.createPopper(buttonShare, tooltip, settings);
+  } else if (!e.matches && popperInstance) {
+    popperInstance.destroy();
+    popperInstance = null;
+  }
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+//
 // show tooltip logic
 function showTooltip() {
+  minWidth48rem.addEventListener("change", handleWidth);
+  handleWidth(minWidth48rem);
+
+  // main logic
   tooltip.setAttribute("data-show", "");
   buttonShare.classList.add("is-active");
 
-  const markup = `
+  tooltip.innerHTML = `
 <p class="c-font_preset-4">Share</p>
 <div class="o-flex_row u-flex_gap:1rem">
   <button class="c-button_small" id="fb-button" type="button">
@@ -49,8 +70,6 @@ function showTooltip() {
 <div id="arrow" data-popper-arrow></div>
 `;
 
-  tooltip.insertAdjacentHTML("beforeend", markup);
-
   // important part! points arrow to button, which called the tooltip
   const arrowElement = tooltip.querySelector("[data-popper-arrow]");
   popperInstance.setOptions({
@@ -70,31 +89,25 @@ function showTooltip() {
 //
 // hide tooltip logic
 function hideTooltip() {
-  tooltip.removeAttribute("data-show");
-  tooltip.innerHTML = "";
-  buttonShare.classList.remove("is-active");
-  buttonShare.blur();
+  tooltip.classList.add("hiding");
+  tooltip.addEventListener(
+    "transitionend",
+    () => {
+      tooltip.removeAttribute("data-show");
+      tooltip.classList.remove("hiding");
+      tooltip.innerHTML = "";
+      buttonShare.classList.remove("is-active");
+      buttonShare.blur();
+    },
+    { once: true }
+  );
 }
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 //
-// show tooltip when screen width is >= 48rem
-const minWidth48rem = window.matchMedia("(min-width: 48rem)");
-let popperInstance = null;
-
-function handleWidth(e) {
-  if (e.matches && popperInstance === null) {
-    popperInstance = Popper.createPopper(buttonShare, tooltip, settings);
-  } else if (!e.matches && popperInstance) {
-    popperInstance.destroy();
-    popperInstance = null;
-  }
-}
-minWidth48rem.addEventListener("change", handleWidth);
-handleWidth(minWidth48rem);
-
+// show tooltip
 buttonShare.addEventListener("click", () => {
   const isShown = tooltip.hasAttribute("data-show");
 

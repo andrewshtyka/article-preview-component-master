@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* #region = GLOBAL */
 html {
   text-rendering: optimizeSpeed;
@@ -174,11 +175,21 @@ body {
 }
 
 #tooltip {
-  display: none;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease-in-out;
 }
 
+/* коли тултіп активний */
 #tooltip[data-show] {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#tooltip.hiding {
+  opacity: 0;
+  transition: opacity 150ms ease-in;
 }
 
 @media (min-width: 48rem) {
@@ -228,13 +239,13 @@ body {
   position: absolute;
   inset: -1rem;
 }
+.c-button_small:focus-visible {
+  outline: 2px solid hsl(210, 46%, 95%);
+  outline-offset: 0.25rem;
+}
 @media (min-width: 64rem) {
   .c-button_small:hover .c-icon_button\:tooltip, .c-button_small:focus-visible .c-icon_button\:tooltip {
     fill: hsl(212, 23%, 69%);
-  }
-  .c-button_small:focus-visible {
-    outline: 2px solid hsl(210, 46%, 95%);
-    outline-offset: 0.25rem;
   }
 }
 

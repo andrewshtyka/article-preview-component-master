@@ -208,11 +208,22 @@ body {
 
 // tooltip invisible by default
 #tooltip {
-  display: none;
+  // display: none;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease-in-out;
 }
 
+/* коли тултіп активний */
 #tooltip[data-show] {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#tooltip.hiding {
+  opacity: 0;
+  transition: opacity 150ms ease-in;
 }
 
 // tooltip arrow styling
@@ -273,15 +284,15 @@ body {
     inset: -1rem;
   }
 
+  &:focus-visible {
+    outline: 2px solid $color-gray-200;
+    outline-offset: 0.25rem;
+  }
+
   @media (min-width: 64rem) {
     &:hover .c-icon_button\:tooltip,
     &:focus-visible .c-icon_button\:tooltip {
       fill: $color-gray-400;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $color-gray-200;
-      outline-offset: 0.25rem;
     }
   }
 }
