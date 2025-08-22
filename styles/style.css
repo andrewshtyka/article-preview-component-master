@@ -235,7 +235,7 @@ body {
 .c-button_small::before {
   content: "";
   position: absolute;
-  inset: -1rem;
+  inset: -0.5rem;
 }
 .c-button_small:focus-visible {
   outline: 2px solid hsl(210, 46%, 95%);

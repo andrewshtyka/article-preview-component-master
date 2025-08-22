@@ -279,7 +279,7 @@ body {
   &::before {
     content: "";
     position: absolute;
-    inset: -1rem;
+    inset: -0.5rem;
   }
 
   &:focus-visible {
