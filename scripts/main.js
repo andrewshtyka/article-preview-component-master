@@ -49,25 +49,27 @@ function showTooltip() {
   buttonShare.classList.add("is-active");
 
   tooltip.innerHTML = `
-<p class="c-font_preset-4">Share</p>
-<div class="o-flex_row u-flex_gap:1rem">
-  <button class="c-button_small" id="fb-button" type="button">
-    <svg class="c-icon_button:tooltip" height="20" width="20">
-      <use href="./images/icons.svg#icon-facebook" />
-    </svg>
-  </button>
-  <button class="c-button_small" id="tw-button" type="button">
-    <svg class="c-icon_button:tooltip" height="20" width="20">
-      <use href="./images/icons.svg#icon-twitter" />
-    </svg>
-  </button>
-  <button class="c-button_small" id="pi-button" type="button">
-    <svg class="c-icon_button:tooltip" height="20" width="20">
-      <use href="./images/icons.svg#icon-pinterest" />
-    </svg>
-  </button>
-</div>
-<div id="arrow" data-popper-arrow></div>
+  <p class="c-font_preset-4">Share</p>
+
+  <div class="o-flex_row u-flex_gap:1rem">
+    <button class="c-button_small" id="fb-button" type="button">
+      <svg class="c-icon_button:tooltip" height="20" width="20">
+        <use href="./images/icons.svg#icon-facebook" />
+      </svg>
+    </button>
+    <button class="c-button_small" id="tw-button" type="button">
+      <svg class="c-icon_button:tooltip" height="20" width="20">
+        <use href="./images/icons.svg#icon-twitter" />
+      </svg>
+    </button>
+    <button class="c-button_small" id="pi-button" type="button">
+      <svg class="c-icon_button:tooltip" height="20" width="20">
+        <use href="./images/icons.svg#icon-pinterest" />
+      </svg>
+    </button>
+  </div>
+  
+  <div id="arrow" data-popper-arrow></div>
 `;
 
   // important part! points arrow to button, which called the tooltip

@@ -208,14 +208,12 @@ body {
 
 // tooltip invisible by default
 #tooltip {
-  // display: none;
   display: flex;
   opacity: 0;
   pointer-events: none;
   transition: opacity 150ms ease-in-out;
 }
 
-/* коли тултіп активний */
 #tooltip[data-show] {
   opacity: 1;
   pointer-events: auto;
@@ -330,6 +328,10 @@ body {
 .o-user_image {
   width: 2.5rem;
   border-radius: 50%;
+}
+
+.o-tooltip_animation {
+  transform: translateY(2rem);
 }
 
 /* #endregion = OBJECTS / LAYOUT */
