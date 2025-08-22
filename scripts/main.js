@@ -74,15 +74,18 @@ function showTooltip() {
 
   // important part! points arrow to button, which called the tooltip
   const arrowElement = tooltip.querySelector("[data-popper-arrow]");
-  popperInstance.setOptions({
-    placement: "top",
-    modifiers: [
-      { name: "offset", options: { offset: [0, 32] } },
-      { name: "arrow", options: { element: arrowElement } },
-    ],
-  });
 
-  popperInstance.update();
+  if (popperInstance) {
+    popperInstance.setOptions({
+      placement: "top",
+      modifiers: [
+        { name: "offset", options: { offset: [0, 32] } },
+        { name: "arrow", options: { element: arrowElement } },
+      ],
+    });
+
+    popperInstance.update();
+  }
 }
 
 ////////////////////////////////////////////////////////////
