@@ -140,6 +140,15 @@ body {
     rotate: -30deg;
   }
 
+  &:focus-visible {
+    outline: 2px solid $color-gray-500;
+    outline-offset: 0.25rem;
+  }
+
+  &.is-active:focus-visible {
+    outline-color: $color-white;
+  }
+
   @media (min-width: 64rem) {
     &:hover,
     &:focus-visible {
@@ -149,12 +158,10 @@ body {
     &:hover .c-icon_button,
     &:focus-visible .c-icon_button {
       fill: $color-white;
-      rotate: -30deg;
     }
 
-    &:focus-visible {
-      outline: 2px solid $color-gray-500;
-      outline-offset: 0.25rem;
+    &.is-active:focus-visible {
+      outline-color: $color-gray-500;
     }
   }
 }
@@ -163,7 +170,7 @@ body {
   transform: translate(0.05rem, -0.05rem);
   fill: $color-gray-500;
 
-  transition: fill 150ms ease-in-out, rotate 200ms ease-in-out;
+  transition: fill 150ms ease-in-out, rotate 150ms ease-out;
 }
 
 .c-sharing_tooltip {

@@ -119,24 +119,29 @@ body {
   fill: hsl(0, 0%, 100%);
   rotate: -30deg;
 }
+.c-button:focus-visible {
+  outline: 2px solid hsl(214, 17%, 51%);
+  outline-offset: 0.25rem;
+}
+.c-button.is-active:focus-visible {
+  outline-color: hsl(0, 0%, 100%);
+}
 @media (min-width: 64rem) {
   .c-button:hover, .c-button:focus-visible {
     background-color: hsl(214, 17%, 51%);
   }
   .c-button:hover .c-icon_button, .c-button:focus-visible .c-icon_button {
     fill: hsl(0, 0%, 100%);
-    rotate: -30deg;
   }
-  .c-button:focus-visible {
-    outline: 2px solid hsl(214, 17%, 51%);
-    outline-offset: 0.25rem;
+  .c-button.is-active:focus-visible {
+    outline-color: hsl(214, 17%, 51%);
   }
 }
 
 .c-icon_button {
   transform: translate(0.05rem, -0.05rem);
   fill: hsl(214, 17%, 51%);
-  transition: fill 150ms ease-in-out, rotate 200ms ease-in-out;
+  transition: fill 150ms ease-in-out, rotate 150ms ease-out;
 }
 
 .c-sharing_tooltip {
